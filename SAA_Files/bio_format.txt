@@ -1,0 +1,11 @@
+Tab-separated, with the following fields in order:
+
+birth place
+native language
+other languages spoken
+age
+sex
+age of english onset
+english learning method
+place of english residence
+length of english residence

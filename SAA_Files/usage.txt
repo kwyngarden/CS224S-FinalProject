@@ -1,0 +1,6 @@
+How to run scripts in here:
+
+1. Use extract_pages.sh to download 1960 html files to html_files. Slow, don't do again.
+2. Use process_html.py to extract .mov filename list and bio information from html_files.
+3. Run get_mov_files.py to download all .mov files using .mov list.
+4. Run convert_to_wav.sh to convert all .mov files to .wav
