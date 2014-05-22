@@ -1,5 +1,6 @@
 Tab-separated, with the following fields in order:
 
+speaker ID
 birth place
 native language
 other languages spoken
