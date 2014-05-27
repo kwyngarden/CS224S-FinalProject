@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-# Copy .mov files into directory of language-segmented subdirectories.
-# Args: [bio information file] [.movs source dir] [output directory] [number of languages] [s]
+# Copy .wav files into directory of language-segmented subdirectories.
+# Args: [bio information file] [.wavs source dir] [output directory] [number of languages] [s]
 # Where s is the maximum number of speaker samples per language, or -1 for
 # no limit.
 
@@ -32,13 +32,13 @@ def get_speaker_ids_of_lang(bio_lines, lang):
 	return speaker_ids, genders
 
 def copy_sample(source_dir, speaker_id, lang_path, out_filename):
-	source_filename = source_dir+"speaker"+speaker_id+".mov"
+	source_filename = source_dir+"speaker"+speaker_id+".wav"
 	if os.path.exists(source_filename):
 		shutil.copyfile(source_filename, lang_path + out_filename)
 		return 1
 	return 0
 
-def group_langs(bio_filename, movs_dir, out_dir, num_langs, samples_per_lang):
+def group_langs(bio_filename, wavs_dir, out_dir, num_langs, samples_per_lang):
 	bio_lines, lang_counts = get_lang_counts(bio_filename)
 	sorted_keys = sorted(lang_counts, key=lang_counts.get, reverse=True)
 	for i in range(num_langs):
@@ -55,10 +55,10 @@ def group_langs(bio_filename, movs_dir, out_dir, num_langs, samples_per_lang):
 			increment = 0
 			if genders[j] == 'male':
 				numMale += 1
-				increment = copy_sample(movs_dir, speaker_ids[j], lang_path, lang+"-m"+str(numMale)+".mov")
+				increment = copy_sample(wavs_dir, speaker_ids[j], lang_path, lang+"-m"+str(numMale)+".wav")
 			elif genders[j] == 'female':
 				numFemale += 1
-				increment = copy_sample(movs_dir, speaker_ids[j], lang_path, lang+"-f"+str(numFemale)+".mov")
+				increment = copy_sample(wavs_dir, speaker_ids[j], lang_path, lang+"-f"+str(numFemale)+".wav")
 			numRead += increment
 
 if __name__ == "__main__":
