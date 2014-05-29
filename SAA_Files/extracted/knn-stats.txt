@@ -1,0 +1,3 @@
+3NN: success 49, decline 395, fail 262
+5NN: success 22, decline 589, fail 95
+10NN: success 19, decline 601, fail 86
