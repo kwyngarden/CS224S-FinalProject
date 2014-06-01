@@ -47,18 +47,15 @@ def group_langs(bio_filename, wavs_dir, out_dir, num_langs, samples_per_lang):
 		lang_path = out_dir + lang + "/"
 		if not os.path.isdir(lang_path):
 			os.makedirs(lang_path)
-		numMale = numFemale = 0
 		numRead = 0
 		for j in range(len(speaker_ids)):
 			if (not samples_per_lang == -1) and numRead >= samples_per_lang:
 				break
 			increment = 0
 			if genders[j] == 'male':
-				numMale += 1
-				increment = copy_sample(wavs_dir, speaker_ids[j], lang_path, lang+"-m"+str(numMale)+".wav")
+				increment = copy_sample(wavs_dir, speaker_ids[j], lang_path, lang+"-m"+str(speaker_ids[j])+".wav")
 			elif genders[j] == 'female':
-				numFemale += 1
-				increment = copy_sample(wavs_dir, speaker_ids[j], lang_path, lang+"-f"+str(numFemale)+".wav")
+				increment = copy_sample(wavs_dir, speaker_ids[j], lang_path, lang+"-f"+str(speaker_ids[j])+".wav")
 			numRead += increment
 
 if __name__ == "__main__":
